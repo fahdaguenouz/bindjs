@@ -145,12 +145,14 @@ First we will update the `createBindElement` function for better flexebilty
 export const createBindElement = (tagName, attributes = {}) => {
   const element = document.createElement(tagName);
   element.add = asyncAppend;
-  if (key in element) {
-    // attaching events and element properties
-    element[key] = value;
-  } else {
-    // normal attributes
-    element.setAttribute(key, value);
+  for (const [key, value] of Object.entries(attributes)) {
+    if (key in element) {
+      // attaching events and element properties
+      element[key] = value;
+    } else {
+      // normal attributes
+      element.setAttribute(key, value);
+    }
   }
   return element;
 };

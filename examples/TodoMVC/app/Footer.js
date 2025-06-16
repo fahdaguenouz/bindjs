@@ -1,5 +1,5 @@
-import htmlElements from "../../src/html/index.js";
-import { frag } from "../../src/html/custom/fragment.js";
+import htmlElements from "../src/html/index.js";
+import { frag } from "../src/html/custom/fragment.js";
 import { Link } from "../../../src/router/Link.js";
 import { deleteCompleted, todos } from "./context/todos.js";
 import { If, When } from "../../../src/core/conditional.js";

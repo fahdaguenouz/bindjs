@@ -8,7 +8,7 @@ const asyncAppend = function (...children) {
         const value = await child;
         results.push(value);
       } catch (err) {
-        console.error(err); 
+        console.error(err);
       }
     }
     this.append(...results);
@@ -42,6 +42,12 @@ export const createBindElement = (tagName, attributes = {}) => {
   const element = document.createElement(tagName);
   Object.assign(element, bindProto);
   for (const [key, value] of Object.entries(attributes)) {
+    if (value instanceof Reference) {
+      value.onChange(() => {
+        element[key] = value.value
+      })
+    }
+
     if (Array.isArray(value)) {
       const internalValue = [];
       let scheduled = false;
