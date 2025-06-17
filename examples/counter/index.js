@@ -16,7 +16,9 @@ const div = (attributes = {}) => {
 class Reference {
     #internalValue = null
     #listener = []
+    
 
+    
     constructor(defaultValue) {
         this.#internalValue = defaultValue
     }
